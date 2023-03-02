@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<head>
+  <title>The Botanist Stop n Shop </title>
+  <style>
+    body {
+      text-align: center;
+      background: url(https://images.immediate.co.uk/production/volatile/sites/10/2018/02/f185aed9-856e-426e-b69a-5427cf843cbe-8547772.jpg);
+      background-size: cover;
+      background-position: center;
+      color: purple;
+      font-family: times new roman;
+    }
+    p {
+      padding: 4px;
+      font-size: 22px;
+      border: 3px solid purple;
+      border-radius: 10px;
+      width: 500px;
+      margin: 20 auto;
+      background: lavender;
+      text-align: center;
+    }
+    input {
+      border: 3px solid purple;
+      padding: 12px;
+      font-size: 18px;
+      font-family: times new roman;
+      color: purple;
+      border-radius: 10px ;
+      background: lavender;
+ 
+    }
+    input[type="submit"] {
+      background: purple;
+      color: lavender;
+      font-family: times new roman;
+      border: solid purple;
+      border-radius: 20px;
+      padding: 5px;
+    }
+    img {
+      width:500px;
+      border: 10px solid purple;
+      border-radius: 30px;
+   
+      }
+     
+  </style>
+</head>
+<body>
+  <img src="https://netstorage-legit.akamaized.net/images/vllkyt5r43p1p4tk7.jpg?imwidth=900">
+  <p>Hey! I'm David, a NYC-based botanist. Let's chat!</p>
+  <input id="Name" placeholder="Your name">
+  <input id="Email" placeholder="Your email">
+  <input id="submit" type="submit">
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyDJoDxpN9a_ALzstWYL8vi6AcD9Zjf5ENc",
+      authDomain: "davd-s-html-project.firebaseapp.com",
+      projectId: "davd-s-html-project",
+      storageBucket: "davd-s-html-project.appspot.com",
+      messagingSenderId: "146281467107",
+      appId: "1:146281467107:web:016b78b9446209831ac9d6",
+      measurementId: "G-9FQD6E68ZY"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+const Name = document.querySelector("#Name") 
+const Email = document.querySelector("#Email")
+document.querySelector('#submit').addEventListener('click', Submit)
+	function Submit() {
+    	function buildTimestamp() {
+    	  const now = new Date();
+    	  let timestamp = now.getFullYear().toString() + "/";
+    	  //const month = now.toLocaleString('default', { month: 'long' });
+
+    	  let month = now.getMonth()+1   //add 1 because Javascript uses 0 for January
+    	  month = month.toString()
+    	  month = addLeadingZero(month)
+    	  timestamp += month + "/"; 
+
+    	  let date = now.getDate().toString()
+    	  date = addLeadingZero(date)
+    	  timestamp += date + "/";
+
+    	  let hours = now.getHours().toString()
+    	  hours = addLeadingZero(hours)
+    	  timestamp += hours + ":";
+
+    	  let minutes = now.getMinutes().toString()
+    	  minutes = addLeadingZero(minutes)
+    	  timestamp += minutes + ":";
+
+    	  let seconds = now.getSeconds().toString()
+    	  seconds = addLeadingZero(seconds)
+    	  timestamp += seconds;
+  
+    	  return timestamp
+    	}
+	
+    	function addLeadingZero(units) {
+    		if (units.length < 2) {
+    			units = "0" + units
+    		}
+    		return units
+    	}
+        
+	  const timestamp = buildTimestamp()
+	  
+	  set(ref(db, timestamp), {
+		  Name: Name.value,
+	      email: Email.value,
+	  });
+
+	  Name.value = ""
+	  Email.value = ""
+	}
+    
+  </script>
+</body>
