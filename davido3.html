@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<head>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@1,300&display=swap" rel="stylesheet">
+<style>
+body {
+  font-family: 'MuseoModerno', cursive;
+  margin: 0 auto;
+  max-width: 600px;
+  background: #8D5185;
+  background-position: center;
+  background-size: contain;
+  padding: 50px;
+}
+div {
+  height: 200px;
+  background-size: cover;
+  position: relative;
+  margin: 40px 0px 0 0;
+  border-radius: 12px;
+}
+h1 {
+font-family: 'MuseoModerno', cursive;
+text-align: center;
+  font-size: 60px;
+  color: purple;
+  margin: 20px;
+  border: 5px solid;
+  background: lavender;
+  border-radius: 50px;
+  max-width: 900px;
+}
+h2 {
+  text-align: center;
+  color: purple;
+  margin: 0 auto;
+  border: 5px solid;
+  background: lavender;
+  border-radius: 50px;
+  max-width: 500px;
+  padding: 10px;
+}
+p {
+  color: purple;
+  background: lavender;
+  background: rgba(230, 230, 250, 0.75);
+  padding: 10px;
+  line-height: 28px;
+  text-align: justify;
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  height: 30px;
+  transition: height .5s;
+  -webkit-transition: height .5s;
+  -moz-transition: height .5s;
+}
+
+small {
+  opacity: 0;
+}
+
+.show-description p {
+  height: 150px;
+}
+
+.show-description small {
+  opacity: 1;
+}
+
+.first{
+  background-image: url("https://as2.ftcdn.net/v2/jpg/02/51/15/15/1000_F_251151517_fQuM7JOHtlXKWVG27FWm0vVu0HkeCNbi.jpg");
+}
+.second{
+  background-image: url("https://thumbs.dreamstime.com/b/peeled-assorted-nuts-wooden-table-background-mix-raw-food-as-snack-assorted-nuts-background-composition-organic-food-top-161997099.jpg");
+}
+.dessert{
+  background-image: url("https://5.imimg.com/data5/SELLER/Default/2021/3/LJ/UK/RU/67691712/black-sunflower-seeds-1000x1000.jpg");
+}
+.price {
+  float: right;
+  input {
+  	font-size: 22px;
+  }
+}
+@media (max-width: 500px) {
+  h1 {
+    font-size: 50px;
+    margin-top: 20px;
+    line-height: 40px;
+  }
+  h2 {
+    font-size: 20px;
+    margin: 20px 0 30px 0;
+    
+  }
+  div {
+    margin: 20px 12px 0 12px;
+  }
+  p {
+    font-size: 20px;
+    line-height: 24px;
+  
+  }
+  small {
+    font-size: 16px;
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+<h1>David's Botany Shop</h1>
+<h2>Where you can buy your desired seeds online if you can't make it!</h2>
+<div class="first">
+    <input class="quantities" type="number" min="0" style="width: 50px">
+
+  <p>Quick and easy seeds to grow <span class="price">$15</span><br />
+  <small>It's official: beans, peas, and pumpkins are among the top ten easiest plants to grow from seed, according to a list created by the Home Garden Seed Association. Also on the list: cucumbers, zinnias, cosmos, sunflowers, lettuce, radishes, and squash.
+</small></p>
+</div>
+
+<div class="second">
+    <input class="quantities" type="number" min="0" style="width: 50px">
+
+  <p>Seeds that can be added to your diet <span class="price">$20</span><br />
+  <small>Some seeds like morning glories, nasturtiums, lupines, dried peas and okra—have extremely tough, outer seed coats. Unless moisture can penetrate these, germination will be a no-go for these difficult seeds. You can break through tough seed coats by lightly sanding them.
+</small></p>
+</div>
+  
+<div class="dessert">
+    <input class="quantities" type="number" min="0" style="width: 50px">
+
+  <p>Hard seeds to grow <span class="price">$15</span><br />
+  <small>Seeds such Flaxseeds, Chia seeds, Pumpkin seeds, Sunflower seeds, Hemp seeds, and Sesame seeds are very time consuming plants to grow
+</small></p>
+</div>
+<br><br>
+<input id="Name"  placeholder="Your name">
+  <input id="Email" type="email" placeholder="Your email">
+  <input id="submit" type="submit">
+  <br><br>
+  
+  
+<script>
+  $('div').on('click', function() {
+      $(this).toggleClass('show-description');
+  });
+
+
+</script>
+ 
+ 
+ 
+ 
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+
+   import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+  
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyAWEuxP9Vxe1mUl0wxF8hyQauTK2RBrSTU",
+    authDomain: "davido3html.firebaseapp.com",
+    databaseURL: "https://davido3html-default-rtdb.firebaseio.com",
+    projectId: "davido3html",
+    storageBucket: "davido3html.appspot.com",
+    messagingSenderId: "1027181832954",
+    appId: "1:1027181832954:web:2a1c8c2d99c0e214173743",
+    measurementId: "G-DDV3K3ETBD"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+
+  const db = getDatabase(app);
+  const Name = document.querySelector("#Name")
+  const Email = document.querySelector("#Email")
+  const quantities = document.querySelectorAll(".quantities") 
+ 
+  const prices = document.querySelectorAll(".price") 
+  
+  
+  document.querySelector('#submit').addEventListener('click', Submit)
+ 
+  const itemsList = ["flaxseeds seeds", "chia seeds", "sesame seeds"]
+ 
+ 
+  function Submit() {
+
+   const timestamp = buildTimestamp()
+      let total = 0
+	  let cart = { }
+	  for  (let i=0; i<quantities.length; i=i+1) {
+	  	if (quantities[i].value != "0" && quantities[i].value != "") {	
+            let price = prices[i].innerHTML.replace('$', '')
+			  total = total + quantities[i].value * price 
+	  		cart[itemsList[i]] = parseInt(quantities[i].value) 
+	  	}
+	  	quantities[i].value = ""
+	  }
+
+ 
+   set(ref(db, timestamp), {
+   Name: Name.value,
+       email: Email.value,
+       cart: cart,
+       totalPrice: total,
+       paid: "not yet",
+       
+   });
+
+   Name.value = ""
+   Email.value = ""
+  }
+  
+  
+  function buildTimestamp() {
+   const now = new Date();
+   let timestamp = now.getFullYear().toString() + "/";
+   //const month = now.toLocaleString('default', { month: 'long' });
+
+   let month = now.getMonth()+1   //add 1 because Javascript uses 0 for January
+   month = month.toString()
+   month = addLeadingZero(month)
+   timestamp += month + "/";
+
+   let date = now.getDate().toString()
+   date = addLeadingZero(date)
+   timestamp += date + "/";
+
+   let hours = now.getHours().toString()
+   hours = addLeadingZero(hours)
+   timestamp += hours + ":";
+
+   let minutes = now.getMinutes().toString()
+   minutes = addLeadingZero(minutes)
+   timestamp += minutes + ":";
+
+   let seconds = now.getSeconds().toString()
+   seconds = addLeadingZero(seconds)
+   timestamp += seconds;
+
+   return timestamp
+  }
+
+  function addLeadingZero(units) {
+  if (units.length < 2) {
+  units = "0" + units
+  }
+  return units
+  }  
+  
+  
+
+
+</script>
+</body>
